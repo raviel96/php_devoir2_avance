@@ -42,12 +42,31 @@ class Database {
         }
     }
 
-    public function insertData() {
+    /**
+     * Read the csv file and insert its data to the table
+     */
+    public function insertData(PDO $pdo, string $filePath) {
+        // Read csv file
+        $file = new SplFileObject($filePath);
+        $file->setFlags(SplFileObject::READ_CSV);
+
+        $sql = "";
+
+        
+        foreach($file as $row) {
+
+            $sql = 'INSERT INTO meteo (date, ville, periode, resume_temps, identifiant_resume, temperature_min, temperature_max, commentaire) VALUES ('explode(";", $row[0][1])')';
+            //  $element = explode(";", $row[0])[1]."<br>";
+            //  echo $element;
+        }
+
+        
 
     }
 
-    public function selectData() {
+    public function selectData(PDO $pdo) {
         
+        // Return a new Meteo object
     }
 
 }
