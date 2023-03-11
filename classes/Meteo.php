@@ -4,15 +4,17 @@ class Meteo {
     private string $date;
     private string $ville;
     private string $periode;
+    private string $resumeTemps;
     private int $identifiantResume;
     private int $temperatureMin;
     private int $temperatureMax;
     private string $commentaire;
 
-    public function __construct(string $date, string $ville, string $periode, int $identifiantResume, int $temperatureMin, int $temperatureMax, string $commentaire) {
+    public function __construct(string $date, string $ville, string $periode,$resumeTemps, int $identifiantResume, int $temperatureMin, int $temperatureMax, string $commentaire) {
         $this->date = $date;
         $this->ville = $ville;
         $this->periode = $periode;
+        $this->resumeTemps = $resumeTemps;
         $this->identifiantResume = $identifiantResume;
         $this->temperatureMin = $temperatureMin;
         $this->temperatureMax = $temperatureMax;
@@ -28,6 +30,10 @@ class Meteo {
     }
     public function getPeriode():string {
         return $this->periode;
+    }
+
+    public function getResumeTemps() {
+        return $this->resumeTemps;
     }
 
     public function getIdentifiantResume():int {
@@ -67,6 +73,10 @@ class Meteo {
 
     public function setCommentaire(string $commentaire):void {
         $this->commentaire = $commentaire;
+    }
+
+    public function setResumeTemps($resumeTemps) {
+        $this->resumeTemps = $resumeTemps;
     }
 }
 

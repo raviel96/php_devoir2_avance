@@ -52,15 +52,21 @@ class Database {
 
         $sql = "";
 
-        
         foreach($file as $row) {
+            $date = explode(";", $row[0])[0];
+            $ville = explode(";", $row[0])[1];
+            $periode = explode(";", $row[0])[2];
+            $resumeTemps = explode(";", $row[0])[3];
+            $identifiantResume = explode(";", $row[0])[4];
+            $temperatureMin = explode(";", $row[0])[5];
+            $temperatureMax = explode(";", $row[0])[6];
+            $commentaire = explode(";", $row[0])[7];
 
-            $sql = 'INSERT INTO meteo (date, ville, periode, resume_temps, identifiant_resume, temperature_min, temperature_max, commentaire) VALUES ('explode(";", $row[0][1])')';
-            //  $element = explode(";", $row[0])[1]."<br>";
-            //  echo $element;
+            $sql = "INSERT INTO meteo (date, ville, periode, resume_temps, identifiant_resume, temperature_min, temperature_max, commentaire) VALUES ($date, $ville, $periode, $resumeTemps, $identifiantResume, $temperatureMin, $temperatureMax, $commentaire)";
+
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
         }
-
-        
 
     }
 
