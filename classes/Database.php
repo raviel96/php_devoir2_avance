@@ -1,9 +1,7 @@
 <?php
+require 'Meteo.php'; 
 class Database {
  
-
-
-    
     public function __construct() {
         
     }
@@ -29,7 +27,7 @@ class Database {
                 identifiant_resume INT NOT NULL,
                 temperature_min INT NOT NULL,
                 temperature_max INT NOT NULL,
-                commentaire VARCHAR(20) NOT NULL,
+                commentaire TEXT NOT NULL,
                 PRIMARY KEY(id)  
             )";
 
@@ -62,7 +60,7 @@ class Database {
             $temperatureMax = explode(";", $row[0])[6];
             $commentaire = explode(";", $row[0])[7];
 
-            $sql = "INSERT INTO meteo (date, ville, periode, resume_temps, identifiant_resume, temperature_min, temperature_max, commentaire) VALUES ($date, $ville, $periode, $resumeTemps, $identifiantResume, $temperatureMin, $temperatureMax, $commentaire)";
+            $sql = "INSERT INTO meteo (date, ville, periode, resume_temps, identifiant_resume, temperature_min, temperature_max, commentaire) VALUES ('$date', '$ville', '$periode', '$resumeTemps', '$identifiantResume', '$temperatureMin', '$temperatureMax', '$commentaire')";
 
             $statement = $pdo->prepare($sql);
             $statement->execute();
@@ -70,9 +68,36 @@ class Database {
 
     }
 
-    public function selectData(PDO $pdo) {
-        
-        // Return a new Meteo object
+    public function selectData(PDO $pdo, string $date) {
+        $meteoList = [];
+        try {
+            $sql = "SELECT date, ville, periode, resume_temps, identifiant_resume, temperature_min, temperature_max, commentaire FROM meteo WHERE date = '$date'";
+
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
+            $result = $statement->fetchAll();
+        } catch (\PDOException $e) {
+            die($e->getmessage());
+        }
+
+        if(isset($result)) {
+            foreach($result as $row) {
+                $date = $row[0];
+                $ville = $row[1];
+                $periode = $row[2];
+                $resumeTemps = $row[3];;
+                $identifiantResume = $row[4];
+                $temperatureMin = $row[5];
+                $temperatureMax = $row[6];
+                $commentaire = $row[7];
+
+                $meteo = new Meteo($date, $ville, $periode, $resumeTemps, $identifiantResume, $temperatureMin, $temperatureMax, $commentaire);
+
+                $meteoList[] = $meteo;
+            }
+        }
+
+        return $meteoList;
     }
 
 }
