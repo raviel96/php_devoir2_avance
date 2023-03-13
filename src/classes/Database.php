@@ -8,6 +8,10 @@ class Database {
 
     /**
      * Connect to the database and create tables
+     * @param string $host
+     * @param string $user
+     * @param string $password
+     * @param string $dbname
      */
     public static function connexion(string $host, string $user, string $password, string $dbname) {
         try {
@@ -42,6 +46,8 @@ class Database {
 
     /**
      * Read the csv file and insert its data to the table
+     * @param PDO $pdo
+     * @param string $filePath
      */
     public function insertData(PDO $pdo, string $filePath) {
         // Read csv file
@@ -68,6 +74,11 @@ class Database {
 
     }
 
+    /**
+     * Select data in database and returning into an array
+     * @param PDO $pdo
+     * @param string $data
+     */
     public function selectData(PDO $pdo, string $date) {
         $meteoList = [];
         try {
@@ -100,9 +111,6 @@ class Database {
 
         return $meteoList;
     }
-
 }
-
-
 
 ?>

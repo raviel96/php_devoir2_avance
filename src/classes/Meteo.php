@@ -24,7 +24,7 @@ class Meteo {
     }
 
     /**
-     * Display all meteo information
+     * Display informations about a specific meteo object
      */
     public function getInfos(Meteo $meteo) {
         echo "<p>".$meteo->getDate()."</p>";
