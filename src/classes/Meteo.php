@@ -22,6 +22,20 @@ class Meteo {
         $this->temperatureMax = $temperatureMax;
         $this->commentaire = $commentaire;
     }
+
+    /**
+     * Display all meteo information
+     */
+    public function getInfos(Meteo $meteo) {
+        echo "<p>".$meteo->getDate()."</p>";
+        echo "<p>".$meteo->getVille()."</p>";
+        echo "<p>".$meteo->getPeriode()."</p>";
+        echo "<p>".$meteo->getResumeTemps()."</p>";
+        echo "<p>".$meteo->getIdentifiantResume()."</p>";
+        echo "<p>".$meteo->getTemperatureMin()."</p>";
+        echo "<p>".$meteo->getTemperatureMax()."</p>";
+        echo "<p>".$meteo->getCommentaire()."</p>";
+    }
     
     //Getters
     public function getDate():string {

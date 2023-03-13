@@ -24,5 +24,11 @@ $database->insertData($pdo, $filePath);
 $meteoListTomorrow = $database->selectData($pdo, $tomorrowDate);
 $meteoListAfterTomorrow = $database->selectData($pdo, $afterTomorrowDate);
 
-echo $twig->render('index.html.twig', ['meteo_tomorrow' => $meteoListTomorrow, 'meteo_after_tomorrow' => $meteoListAfterTomorrow]);
+$titles = [
+    'Dates', 'Villes', 'Période', 'Résumé temps',
+    'Identifiant résumé', 'Température min',
+    'Température max', 'Commentaire'
+];
+
+echo $twig->render('index.html.twig', ['meteo_tomorrow' => $meteoListTomorrow, 'meteo_after_tomorrow' => $meteoListAfterTomorrow, 'titles' => $titles]);
 ?>

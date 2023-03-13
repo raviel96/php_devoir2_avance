@@ -12,26 +12,14 @@
         <h1>Méteo</h1>
         <div class="card">
             <div class="card-header">
-                <p>Dates</p>
-                <p>Villes</p>
-                <p>Période</p>
-                <p>Résumé temps</p>
-                <p>Identifiant résume</p>
-                <p>Température min</p>
-                <p>Température max</p>
-                <p>Commentaire</p>
+                {% for title in titles %}
+                    <p>{{title}}</p>
+                {% endfor %}
             </div>
             <div class="row">
                 {% for meteo in meteo_tomorrow %}
                     <div class="row-content">
-                        <p>{{meteo.getDate()}}</p>
-                        <p>{{meteo.getVille()}}</p>
-                        <p>{{meteo.getPeriode()}}</p>
-                        <p>{{meteo.getResumeTemps()}}</p>
-                        <p>{{meteo.getIdentifiantResume()}}</p>
-                        <p>{{meteo.getTemperatureMin()}}</p>
-                        <p>{{meteo.getTemperatureMax()}}</p>
-                        <p>{{meteo.getCommentaire()}}</p>
+                        {{meteo.getInfos(meteo)}}
                     </div>
                 {% endfor %}
             </div>
@@ -39,26 +27,14 @@
 
         <div class="card">
             <div class="card-header">
-                    <p>Dates</p>
-                    <p>Villes</p>
-                    <p>Période</p>
-                    <p>Résumé temps</p>
-                    <p>Identifiant résume</p>
-                    <p>Température min</p>
-                    <p>Température max</p>
-                    <p>Commentaire</p>
+                {% for title in titles %}
+                    <p>{{title}}</p>
+                {% endfor %}
             </div>
             <div class="row">
                 {% for meteo in meteo_after_tomorrow %}
                      <div class="row-content">
-                            <p>{{meteo.getDate()}}</p>
-                            <p>{{meteo.getVille()}}</p>
-                            <p>{{meteo.getPeriode()}}</p>
-                            <p>{{meteo.getResumeTemps()}}</p>
-                            <p>{{meteo.getIdentifiantResume()}}</p>
-                            <p>{{meteo.getTemperatureMin()}}</p>
-                            <p>{{meteo.getTemperatureMax()}}</p>
-                            <p>{{meteo.getCommentaire()}}</p>
+                        {{meteo.getInfos(meteo)}}
                     </div>
                  {% endfor %}
             </div>
