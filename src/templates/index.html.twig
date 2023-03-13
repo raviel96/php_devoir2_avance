@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Méteo</title>
+</head>
+<body>
+    <div class="container center">
+        <h1>Méteo</h1>
+        <div class="card">
+            <div class="card-header">
+                <p>Dates</p>
+                <p>Villes</p>
+                <p>Période</p>
+                <p>Résumé temps</p>
+                <p>Identifiant résume</p>
+                <p>Température min</p>
+                <p>Température max</p>
+                <p>Commentaire</p>
+            </div>
+            <div class="row">
+                {% for meteo in meteo_tomorrow %}
+                    <div class="row-content">
+                        <p>{{meteo.getDate()}}</p>
+                        <p>{{meteo.getVille()}}</p>
+                        <p>{{meteo.getPeriode()}}</p>
+                        <p>{{meteo.getResumeTemps()}}</p>
+                        <p>{{meteo.getIdentifiantResume()}}</p>
+                        <p>{{meteo.getTemperatureMin()}}</p>
+                        <p>{{meteo.getTemperatureMax()}}</p>
+                        <p>{{meteo.getCommentaire()}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                    <p>Dates</p>
+                    <p>Villes</p>
+                    <p>Période</p>
+                    <p>Résumé temps</p>
+                    <p>Identifiant résume</p>
+                    <p>Température min</p>
+                    <p>Température max</p>
+                    <p>Commentaire</p>
+            </div>
+            <div class="row">
+                {% for meteo in meteo_after_tomorrow %}
+                     <div class="row-content">
+                            <p>{{meteo.getDate()}}</p>
+                            <p>{{meteo.getVille()}}</p>
+                            <p>{{meteo.getPeriode()}}</p>
+                            <p>{{meteo.getResumeTemps()}}</p>
+                            <p>{{meteo.getIdentifiantResume()}}</p>
+                            <p>{{meteo.getTemperatureMin()}}</p>
+                            <p>{{meteo.getTemperatureMax()}}</p>
+                            <p>{{meteo.getCommentaire()}}</p>
+                    </div>
+                 {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

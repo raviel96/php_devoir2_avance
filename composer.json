@@ -1,0 +1,17 @@
+{
+    "name": "stagiaire_ab3/php_devoir2_avance",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "raviel96",
+            "email": "manuelfontaine971@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.0"
+    }
+}

@@ -71,7 +71,7 @@ class Database {
     public function selectData(PDO $pdo, string $date) {
         $meteoList = [];
         try {
-            $sql = "SELECT date, ville, periode, resume_temps, identifiant_resume, temperature_min, temperature_max, commentaire FROM meteo WHERE date = '$date'";
+            $sql = "SELECT * FROM meteo WHERE date = '$date'";
 
             $statement = $pdo->prepare($sql);
             $statement->execute();
@@ -82,16 +82,17 @@ class Database {
 
         if(isset($result)) {
             foreach($result as $row) {
-                $date = $row[0];
-                $ville = $row[1];
-                $periode = $row[2];
-                $resumeTemps = $row[3];;
-                $identifiantResume = $row[4];
-                $temperatureMin = $row[5];
-                $temperatureMax = $row[6];
-                $commentaire = $row[7];
+                $id = $row[0];
+                $date = $row[1];
+                $ville = $row[2];
+                $periode = $row[3];
+                $resumeTemps = $row[4];
+                $identifiantResume = $row[5];
+                $temperatureMin = $row[6];
+                $temperatureMax = $row[7];
+                $commentaire = $row[8];
 
-                $meteo = new Meteo($date, $ville, $periode, $resumeTemps, $identifiantResume, $temperatureMin, $temperatureMax, $commentaire);
+                $meteo = new Meteo($id, $date, $ville, $periode, $resumeTemps, $identifiantResume, $temperatureMin, $temperatureMax, $commentaire);
 
                 $meteoList[] = $meteo;
             }

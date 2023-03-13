@@ -1,6 +1,8 @@
 <?php
 
 class Meteo {
+
+    private int $id;
     private string $date;
     private string $ville;
     private string $periode;
@@ -10,7 +12,7 @@ class Meteo {
     private int $temperatureMax;
     private string $commentaire;
 
-    public function __construct(string $date, string $ville, string $periode,$resumeTemps, int $identifiantResume, int $temperatureMin, int $temperatureMax, string $commentaire) {
+    public function __construct(int $id, string $date, string $ville, string $periode,string $resumeTemps, int $identifiantResume, int $temperatureMin, int $temperatureMax, string $commentaire) {
         $this->date = $date;
         $this->ville = $ville;
         $this->periode = $periode;
